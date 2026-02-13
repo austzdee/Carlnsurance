@@ -56,6 +56,20 @@ namespace Carlnsurance.Controllers
                 //Base Monthly Insurance Quote
                 double quote = 50.0;
 
+                //Calculate Age
+                int age = DateTime.Now.Year - insuree.DateOfBirth.Year;
+                if(insuree.DateOfBirth > DateTime.Today.AddYears(-age))
+                {
+                    age -= 1;
+                }
+
+
+                //Rule: If the user is under 18, add $100 to the monthly total
+                if (age < 18)
+                {
+                    quote += 100.0;
+                }
+
                 //Assign Base Quote
                 insuree.Quote = quote;
 

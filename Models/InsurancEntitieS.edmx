@@ -30,7 +30,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CarInsurance.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Insureee">
+        <EntityType Name="Insuree">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -48,7 +48,7 @@
           <Property Name="Quote" Type="Double" Nullable="false" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Insureees" EntityType="Self.Insureee" />
+          <EntitySet Name="Insurees" EntityType="CarInsurance.Model.Insuree" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -56,8 +56,8 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CarInsuranceModelStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Insureees">
-            <EntityTypeMapping TypeName="CarInsurance.Model.Insureee">
+          <EntitySetMapping Name="Insurees">
+            <EntityTypeMapping TypeName="CarInsurance.Model.Insuree">
               <MappingFragment StoreEntitySet="Insureees">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />

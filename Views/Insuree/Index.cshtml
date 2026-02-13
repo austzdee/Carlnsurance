@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Carlnsurance.Models.Insuree>
+
+@{
+    ViewBag.Title = "Insurees";
+}
+
+<div class="max-w-7xl mx-auto px-6 py-10">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-3xl font-bold text-gray-800">Insurees</h2>
+
+        @Html.ActionLink(
+            "Create New",
+            "Create",
+            null,
+            new
+            {
+                @class = "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            }
+        )
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
+        <table class="min-w-full border-collapse">
+            <thead class="bg-gray-100 text-sm uppercase text-gray-600">
+                <tr>
+                    <th class="px-4 py-3 text-left">First Name</th>
+                    <th class="px-4 py-3 text-left">Last Name</th>
+                    <th class="px-4 py-3 text-left">Email</th>
+                    <th class="px-4 py-3 text-left">DOB</th>
+                    <th class="px-4 py-3 text-left">Car Year</th>
+                    <th class="px-4 py-3 text-left">Make</th>
+                    <th class="px-4 py-3 text-left">Model</th>
+                    <th class="px-4 py-3 text-center">DUI</th>
+                    <th class="px-4 py-3 text-center">Tickets</th>
+                    <th class="px-4 py-3 text-center">Coverage</th>
+                    <th class="px-4 py-3 text-right">Quote</th>
+                    <th class="px-4 py-3 text-center">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody class="divide-y text-sm">
+                @foreach (var item in Model)
+                {
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-3">@item.FirstName</td>
+                        <td class="px-4 py-3">@item.LastName</td>
+                        <td class="px-4 py-3">@item.EmailAddress</td>
+                        <td class="px-4 py-3">@item.DateOfBirth.ToShortDateString()</td>
+                        <td class="px-4 py-3">@item.CarYear</td>
+                        <td class="px-4 py-3">@item.CarMake</td>
+                        <td class="px-4 py-3">@item.CarMode</td>
+                        <td class="px-4 py-3 text-center">
+                            @(item.DUI ? "Yes" : "No")
+                        </td>
+                        <td class="px-4 py-3 text-center">@item.SpeedingTickets</td>
+                        <td class="px-4 py-3 text-center">
+                            @(item.CoverageType ? "Full" : "Liability")
+                        </td>
+                        <td class="px-4 py-3 text-right font-semibold text-green-600">
+                            £@item.Quote
+                        </td>
+                        <td class="px-4 py-3 text-center space-x-2">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id },
+                                new { @class = "text-blue-600 hover:underline" })
+                            |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id },
+                                new { @class = "text-gray-600 hover:underline" })
+                            |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id },
+                                new { @class = "text-red-600 hover:underline" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

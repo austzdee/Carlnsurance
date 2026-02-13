@@ -2,32 +2,66 @@
     ViewBag.Title = "Home Page";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+<main class="min-h-screen bg-gray-50 py-12 px-6">
+    <!-- Hero Section -->
+    <section class="max-w-5xl mx-auto text-center mb-16">
+        <h1 class="text-4xl font-extrabold text-gray-800 mb-4">
+            ASP.NET MVC
+        </h1>
+
+        <p class="text-lg text-gray-600 mb-6">
+            ASP.NET is a free web framework for building powerful web applications using HTML, CSS, and JavaScript.
+        </p>
+
+        <a href="https://asp.net"
+           class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow hover:bg-blue-700 transition">
+            Learn more →
+        </a>
     </section>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
+    <!-- Feature Cards -->
+    <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+            <h2 class="text-xl font-semibold text-gray-800 mb-3">
+                Getting Started
+            </h2>
+            <p class="text-gray-600 mb-4">
+                ASP.NET MVC provides a patterns-based approach that enables clean separation of concerns
+                and full control over markup.
             </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
-    </div>
+            <a href="https://go.microsoft.com/fwlink/?LinkId=301865"
+               class="text-blue-600 font-medium hover:underline">
+                Learn more →
+            </a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+            <h2 class="text-xl font-semibold text-gray-800 mb-3">
+                Get More Libraries
+            </h2>
+            <p class="text-gray-600 mb-4">
+                NuGet makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
+            </p>
+            <a href="https://go.microsoft.com/fwlink/?LinkId=301866"
+               class="text-blue-600 font-medium hover:underline">
+                Learn more →
+            </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+            <h2 class="text-xl font-semibold text-gray-800 mb-3">
+                Web Hosting
+            </h2>
+            <p class="text-gray-600 mb-4">
+                Find hosting providers that offer the right mix of features and pricing for your applications.
+            </p>
+            <a href="https://go.microsoft.com/fwlink/?LinkId=301867"
+               class="text-blue-600 font-medium hover:underline">
+                Learn more →
+            </a>
+        </div>
+    </section>
 </main>

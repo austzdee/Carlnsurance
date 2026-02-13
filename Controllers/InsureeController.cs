@@ -48,15 +48,22 @@ namespace Carlnsurance.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarMode,DUI,SpeedingTickets,CoverageType,Quote")] Insuree insuree)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarMode,DUI,SpeedingTickets,CoverageType")] Insuree insuree)
         {
+            
             if (ModelState.IsValid)
             {
+                //Base Monthly Insurance Quote
+                double quote = 50.0;
+
+                //Assign Base Quote
+                insuree.Quote = quote;
+
                 db.Insurees.Add(insuree);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-
             return View(insuree);
         }
 

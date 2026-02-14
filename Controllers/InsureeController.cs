@@ -65,13 +65,17 @@ namespace Carlnsurance.Controllers
 
 
                 //Rule: If the user is under 18, add $100 to the monthly total
-                if (age < 18)
+                if (age <= 18)
                 {
                     quote += 100.0;
                 }
+                else if (age >= 19 && age <= 25)
+                {
+                    quote += 50.0;
+                }
 
-                //Assign Base Quote
-                insuree.Quote = quote;
+                    //Assign Base Quote
+                    insuree.Quote = quote;
 
                 db.Insurees.Add(insuree);
                 db.SaveChanges();
@@ -101,7 +105,7 @@ namespace Carlnsurance.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarMode,DUI,SpeedingTickets,CoverageType,Quote")] Insuree insuree)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarMode,DUI,SpeedingTickets,CoverageType")] Insuree insuree)
         {
             if (ModelState.IsValid)
             {

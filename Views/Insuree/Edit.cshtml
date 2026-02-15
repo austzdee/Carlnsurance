@@ -1,125 +1,172 @@
 ﻿@model Carlnsurance.Models.Insuree
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Insuree";
 }
 
-<h2>Edit</h2>
+<main class="max-w-4xl mx-auto px-4 py-10">
+    <div class="bg-white shadow-xl rounded-2xl p-8">
+        <!-- Header -->
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">Edit Insuree</h1>
+            <p class="mt-2 text-gray-600">
+                Update the insuree details. The quote is calculated automatically.
+            </p>
+        </header>
 
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-red-600 text-sm mb-4" })
+            @Html.HiddenFor(m => m.Id)
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Insuree</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+            <div class="rounded-xl border border-gray-200 bg-gray-50 p-6 space-y-5">
+                <!-- First Name -->
+                <div>
+                    @Html.LabelFor(m => m.FirstName, new { @class = "block text-sm font-medium text-gray-700" })
+                    @Html.EditorFor(m => m.FirstName, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        }
+                    })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-red-500 text-sm" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- Last Name -->
+                <div>
+                    @Html.LabelFor(m => m.LastName, new { @class = "block text-sm font-medium text-gray-700" })
+                    @Html.EditorFor(m => m.LastName, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        }
+                    })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-red-500 text-sm" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- Email -->
+                <div>
+                    @Html.LabelFor(m => m.EmailAddress, new { @class = "block text-sm font-medium text-gray-700" })
+                    @Html.EditorFor(m => m.EmailAddress, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        }
+                    })
+                    @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-red-500 text-sm" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- Date of Birth -->
+                <div>
+                    @Html.LabelFor(m => m.DateOfBirth, new { @class = "block text-sm font-medium text-gray-700" })
+                    @Html.EditorFor(m => m.DateOfBirth, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        }
+                    })
+                    @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-red-500 text-sm" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- Car Year -->
+                <div>
+                    @Html.LabelFor(m => m.CarYear, new { @class = "block text-sm font-medium text-gray-700" })
+                    @Html.EditorFor(m => m.CarYear, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        }
+                    })
+                    @Html.ValidationMessageFor(m => m.CarYear, "", new { @class = "text-red-500 text-sm" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CarYear, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CarYear, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CarYear, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- Car Make -->
+                <div>
+                    @Html.LabelFor(m => m.CarMake, new { @class = "block text-sm font-medium text-gray-700" })
+                    @Html.EditorFor(m => m.CarMake, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        }
+                    })
+                    @Html.ValidationMessageFor(m => m.CarMake, "", new { @class = "text-red-500 text-sm" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CarMake, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CarMake, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CarMake, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- Car Model -->
+                <div>
+                    @Html.LabelFor(m => m.CarMode, new { @class = "block text-sm font-medium text-gray-700" })
+                    @Html.EditorFor(m => m.CarMode, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        }
+                    })
+                    @Html.ValidationMessageFor(m => m.CarMode, "", new { @class = "text-red-500 text-sm" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CarMode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CarMode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CarMode, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- Speeding Tickets -->
+                <div>
+                    @Html.LabelFor(m => m.SpeedingTickets, new { @class = "block text-sm font-medium text-gray-700" })
+                    @Html.EditorFor(m => m.SpeedingTickets, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        }
+                    })
+                    @Html.ValidationMessageFor(m => m.SpeedingTickets, "", new { @class = "text-red-500 text-sm" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DUI, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.DUI)
-                    @Html.ValidationMessageFor(model => model.DUI, "", new { @class = "text-danger" })
+                <!-- Checkboxes -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+                    <label class="flex items-center gap-2 text-sm text-gray-700">
+                        @Html.EditorFor(m => m.DUI)
+                        <span>DUI</span>
+                    </label>
+
+                    <label class="flex items-center gap-2 text-sm text-gray-700">
+                        @Html.EditorFor(m => m.CoverageType)
+                        <span>Full Coverage</span>
+                    </label>
+                </div>
+
+                <!-- Read-only Quote -->
+                <div class="pt-2">
+                    <span class="block text-sm font-medium text-gray-700">@Html.DisplayNameFor(m => m.Quote)</span>
+                    <div class="mt-1 rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-900 font-semibold">
+                        @String.Format("{0:C}", Model.Quote)
+                    </div>
+                    <p class="mt-1 text-xs text-gray-500">
+                        Quote is calculated automatically based on the entered details.
+                    </p>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SpeedingTickets, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SpeedingTickets, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SpeedingTickets, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <!-- Actions -->
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:justify-end">
+                <button type="submit"
+                        class="inline-flex items-center justify-center rounded-md bg-indigo-600 px-6 py-2 text-white font-semibold hover:bg-indigo-700 transition">
+                    Save
+                </button>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CoverageType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.CoverageType)
-                    @Html.ValidationMessageFor(model => model.CoverageType, "", new { @class = "text-danger" })
-                </div>
+                @Html.ActionLink(
+                    "Back to List",
+                    "Index",
+                    null,
+                    new { @class = "inline-flex items-center justify-center rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-100 transition" }
+                )
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Quote, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Quote, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Quote, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+</main>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

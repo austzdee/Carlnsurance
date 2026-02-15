@@ -1,106 +1,129 @@
 ﻿@model Carlnsurance.Models.Insuree
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Insuree Details";
 }
 
-<h2>Details</h2>
+@if (Model == null)
+{
+    <main class="max-w-4xl mx-auto px-4 py-10">
+        <div class="bg-white shadow-lg rounded-xl p-8">
+            <h1 class="text-2xl font-bold text-gray-900">Record not found</h1>
+            <p class="mt-2 text-gray-600">The insuree you requested doesn’t exist or no ID was provided.</p>
 
-<div>
-    <h4>Insuree</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+            <div class="mt-6">
+                @Html.ActionLink(
+                    "Back to List",
+                    "Index",
+                    null,
+                    new
+                    {
+                        @class = "inline-flex items-center justify-center rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-100 transition"
+                    }
+                )
+            </div>
+        </div>
+    </main>
+    return;
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+<main class="max-w-4xl mx-auto px-4 py-10">
+    <div class="bg-white shadow-lg rounded-xl p-8">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+        <!-- Header -->
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">Insuree Details</h1>
+            <p class="mt-2 text-gray-600">
+                View the insured person’s information and calculated monthly quote.
+            </p>
+        </header>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+        <!-- Details Section -->
+        <section class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+            <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </dt>
+                <div>
+                    <dt class="font-semibold text-gray-700">First Name</dt>
+                    <dd class="text-gray-900 mt-1">@Model.FirstName</dd>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.EmailAddress)
-        </dd>
+                <div>
+                    <dt class="font-semibold text-gray-700">Last Name</dt>
+                    <dd class="text-gray-900 mt-1">@Model.LastName</dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
+                <div>
+                    <dt class="font-semibold text-gray-700">Email Address</dt>
+                    <dd class="text-gray-900 mt-1">@Model.EmailAddress</dd>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
+                <div>
+                    <dt class="font-semibold text-gray-700">Date of Birth</dt>
+                    <dd class="text-gray-900 mt-1">@Model.DateOfBirth.ToString("dd MMM yyyy")</dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CarYear)
-        </dt>
+                <div>
+                    <dt class="font-semibold text-gray-700">Car Year</dt>
+                    <dd class="text-gray-900 mt-1">@Model.CarYear</dd>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CarYear)
-        </dd>
+                <div>
+                    <dt class="font-semibold text-gray-700">Car Make</dt>
+                    <dd class="text-gray-900 mt-1">@Model.CarMake</dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CarMake)
-        </dt>
+                <div>
+                    <dt class="font-semibold text-gray-700">Car Model</dt>
+                    <dd class="text-gray-900 mt-1">@Model.CarMode</dd>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CarMake)
-        </dd>
+                <div>
+                    <dt class="font-semibold text-gray-700">Speeding Tickets</dt>
+                    <dd class="text-gray-900 mt-1">@Model.SpeedingTickets</dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CarMode)
-        </dt>
+                <div>
+                    <dt class="font-semibold text-gray-700">DUI</dt>
+                    <dd class="text-gray-900 mt-1">@(Model.DUI ? "Yes" : "No")</dd>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CarMode)
-        </dd>
+                <div>
+                    <dt class="font-semibold text-gray-700">Coverage Type</dt>
+                    <dd class="text-gray-900 mt-1">@(Model.CoverageType ? "Full Coverage" : "Liability")</dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DUI)
-        </dt>
+                <div class="sm:col-span-2">
+                    <dt class="font-semibold text-gray-700">Monthly Quote</dt>
+                    <dd class="text-gray-900 mt-1 text-lg font-bold">
+                        @(String.Format("{0:C}", Model.Quote))
+                    </dd>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DUI)
-        </dd>
+            </dl>
+        </section>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SpeedingTickets)
-        </dt>
+        <!-- Actions -->
+        <div class="mt-8 flex flex-col sm:flex-row justify-end gap-3">
+            @Html.ActionLink(
+                "Edit",
+                "Edit",
+                new { id = Model.Id },
+                new
+                {
+                    @class = "inline-flex items-center justify-center rounded-md bg-indigo-600 px-6 py-2 text-white font-semibold hover:bg-indigo-700 transition"
+                }
+            )
 
-        <dd>
-            @Html.DisplayFor(model => model.SpeedingTickets)
-        </dd>
+            @Html.ActionLink(
+                "Back to List",
+                "Index",
+                null,
+                new
+                {
+                    @class = "inline-flex items-center justify-center rounded-md border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-100 transition"
+                }
+            )
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CoverageType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CoverageType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quote)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quote)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    </div>
+</main>

@@ -1,19 +1,74 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+<main class="max-w-4xl mx-auto px-4 py-10">
+    <div class="bg-white shadow-xl rounded-2xl p-8">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                @ViewBag.Title
+            </h1>
+            @if (ViewBag.Message != null)
+            {
+                <p class="mt-2 text-gray-600 text-lg">
+                    @ViewBag.Message
+                </p>
+            }
+        </header>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+        <!-- Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Address -->
+            <section class="border rounded-xl p-6 bg-gray-50">
+                <h2 class="text-lg font-semibold text-gray-900 mb-3">
+                    Office Address
+                </h2>
+
+                <address class="not-italic text-gray-700 space-y-2 text-sm">
+                    <p>Dannito Corp</p>
+                    <p>Greater Manchester, United Kingdom</p>
+                    <p>
+                        <span class="font-semibold">Phone:</span>
+                        <a href="tel:4255550100" class="text-indigo-600 hover:underline">
+                            425.555.0100
+                        </a>
+                    </p>
+                </address>
+            </section>
+
+            <!-- Contact Emails -->
+            <section class="border rounded-xl p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-3">
+                    Email Contacts
+                </h2>
+
+                <div class="space-y-4 text-sm">
+                    <p>
+                        <span class="font-semibold text-gray-800">Support:</span><br />
+                        <a href="mailto:Support@dannito.com"
+                           class="text-indigo-600 hover:text-indigo-700 hover:underline">
+                            Support@dannito.com
+                        </a>
+                    </p>
+
+                    <p>
+                        <span class="font-semibold text-gray-800">Marketing:</span><br />
+                        <a href="mailto:Marketing@dannito.com"
+                           class="text-indigo-600 hover:text-indigo-700 hover:underline">
+                            Marketing@dannito.com
+                        </a>
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer CTA -->
+        <div class="mt-10 flex justify-end">
+            <a href="@Url.Action("Index", "Home")"
+               class="inline-flex items-center rounded-md bg-indigo-600 px-6 py-2 text-white font-semibold hover:bg-indigo-700 transition">
+                Back to Home
+            </a>
+        </div>
+    </div>
 </main>

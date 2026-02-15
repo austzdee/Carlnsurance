@@ -83,9 +83,31 @@ namespace Carlnsurance.Controllers
                 {
                     quote += 25.0;
                 }
-                        
 
-                    //Assign Base Quote
+                if(insuree.CarYear > 2015)
+
+                {
+                    quote += 25.0;
+                }
+
+                // Car make rule: Porsche adds £25
+                bool isPorsche = 
+                    !string.IsNullOrWhiteSpace(insuree.CarMake) && 
+                    insuree.CarMake.Trim().Equals("Porsche", StringComparison.OrdinalIgnoreCase);
+                
+                if (isPorsche)
+                {
+                    quote += 25.0;
+                }
+                // Car model rule: Porsche 911 Carrera adds additionals £25
+                if(isPorsche &&
+                    !string.IsNullOrWhiteSpace(insuree.CarMode) && 
+                    insuree.CarMode.Trim().Equals("911 Carrerra",StringComparison.OrdinalIgnoreCase))
+                {
+                    quote += 25.0;
+                }
+
+               //Assign Base Quote
                     insuree.Quote = quote;
 
                 db.Insurees.Add(insuree);

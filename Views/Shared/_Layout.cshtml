@@ -29,9 +29,20 @@
                 <li>
                     @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "text-sm font-medium text-gray-700 hover:text-gray-900" })
                 </li>
-                <li>
-                    @Html.ActionLink("Admin", "Admin", "Insuree", null, new { @class = "text-sm font-semibold text-indigo-600 hover:text-indigo-700" })
-                </li>
+                @if (!Request.IsAuthenticated)
+                {
+                    <li>
+                        @Html.ActionLink("Admin", "Login", "Account", null,
+                            new { @class = "text-sm font-semibold text-indigo-600 hover:text-indigo-700" })
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Html.ActionLink("Logout", "Logout", "Account", null,
+                            new { @class = "text-sm font-medium text-red-600 hover:text-red-700" })
+                    </li>
+                }
             </ul>
         </div>
     </nav>
@@ -40,6 +51,8 @@
     <main class="max-w-7xl mx-auto px-4 py-6">
         @RenderBody()
     </main>
+
+   
 
     @RenderSection("scripts", required: false)
 </body>

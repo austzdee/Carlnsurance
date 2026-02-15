@@ -25,7 +25,7 @@ namespace Carlnsurance.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Insuree insuree = db.Insurees.Find(id);
             if (insuree == null)
@@ -195,6 +195,13 @@ namespace Carlnsurance.Controllers
             return RedirectToAction("Index");
         }
 
+        //Get: Admin Insuree/Admin
+        public ActionResult Admin()
+        {
+            var insurees = db.Insurees.ToList();
+            return View(insurees);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -203,5 +210,7 @@ namespace Carlnsurance.Controllers
             }
             base.Dispose(disposing);
         }
+
+
     }
 }

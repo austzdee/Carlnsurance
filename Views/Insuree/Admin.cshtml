@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Carlnsurance.Models.Insuree>
+
+@{
+    ViewBag.Title = "Admin – Issued Quotes";
+}
+
+<main class="max-w-6xl mx-auto px-4 py-10">
+    <div class="bg-white shadow-xl rounded-2xl p-8">
+
+        <!-- Header -->
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">Issued Insurance Quotes</h1>
+            <p class="mt-2 text-gray-600">
+                Administrative view of all insurance quotes issued by the system.
+            </p>
+        </header>
+
+        <!-- Quotes Table -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full border border-gray-200 rounded-lg overflow-hidden">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">First Name</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Last Name</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Monthly Quote</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    @foreach (var item in Model)
+                    {
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-sm text-gray-900">@item.FirstName</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">@item.LastName</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">@item.EmailAddress</td>
+                            <td class="px-6 py-4 text-sm font-semibold text-gray-900">
+                                @String.Format("{0:C}", item.Quote)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-6">
+            @Html.ActionLink(
+                "Back to Insuree List",
+                "Index",
+                null,
+                new
+                {
+                    @class = "inline-flex items-center justify-center rounded-md border border-gray-300 px-5 py-2 text-gray-700 hover:bg-gray-100 transition"
+                }
+            )
+        </div>
+
+    </div>
+</main>

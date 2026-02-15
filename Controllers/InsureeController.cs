@@ -114,6 +114,19 @@ namespace Carlnsurance.Controllers
                     quote += insuree.SpeedingTickets * 10.0;
                 }
 
+                // DUI rule: add 25% to total
+
+                if(insuree.DUI)
+                {
+                    quote *= 1.25;
+                }
+
+                //Full coverage rule: add 50% to total
+                if(insuree.CoverageType)
+                {
+                    quote *= 1.50;
+                }
+
                //Assign Base Quote
                     insuree.Quote = quote;
 

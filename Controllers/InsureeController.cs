@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Carlnsurance.Models;
+using Carlnsurance.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,7 +8,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Carlnsurance.Models;
 
 namespace Carlnsurance.Controllers
 {
@@ -195,11 +196,23 @@ namespace Carlnsurance.Controllers
             return RedirectToAction("Index");
         }
 
-        //Get: Admin Insuree/Admin
+        // ADMIN DASHBOARD
+        [Authorize]
         public ActionResult Admin()
         {
-            var insurees = db.Insurees.ToList();
-            return View(insurees);
+            // simple “admin user” rule for your assignment
+            if (!User.Identity.Name.Equals("admin", System.StringComparison.OrdinalIgnoreCase))
+                return new HttpStatusCodeResult(403);
+
+            var quotes = db.Insurees.Select(i => new AdminQuoteVM
+            {
+                FirstName = i.FirstName,
+                LastName = i.LastName,
+                EmailAddress = i.EmailAddress,
+                Quote = i.Quote
+            }).ToList();
+
+            return View(quotes);
         }
 
         protected override void Dispose(bool disposing)

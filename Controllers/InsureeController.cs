@@ -60,9 +60,8 @@ namespace Carlnsurance.Controllers
                 int age = DateTime.Now.Year - insuree.DateOfBirth.Year;
                 if(insuree.DateOfBirth > DateTime.Today.AddYears(-age))
                 {
-                    age -= 1;
+                    age --;
                 }
-
 
                 //Rule: If the user is under 18, add $100 to the monthly total
                 if (age <= 18)
@@ -72,6 +71,10 @@ namespace Carlnsurance.Controllers
                 else if (age >= 19 && age <= 25)
                 {
                     quote += 50.0;
+                }
+                else
+                {
+                    quote += 25.0;
                 }
 
                     //Assign Base Quote

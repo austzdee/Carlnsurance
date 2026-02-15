@@ -1,67 +1,131 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
-<main class="min-h-screen bg-gray-50 py-12 px-6">
-    <!-- Hero Section -->
-    <section class="max-w-5xl mx-auto text-center mb-16">
-        <h1 class="text-4xl font-extrabold text-gray-800 mb-4">
-            ASP.NET MVC
-        </h1>
+<!-- HERO SECTION -->
+<section class="bg-indigo-600 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-        <p class="text-lg text-gray-600 mb-6">
-            ASP.NET is a free web framework for building powerful web applications using HTML, CSS, and JavaScript.
-        </p>
+        <div>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                Simple, Fair Car Insurance Quotes
+            </h1>
 
-        <a href="https://asp.net"
-           class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow hover:bg-blue-700 transition">
-            Learn more →
-        </a>
+            <p class="mt-4 text-lg text-indigo-100">
+                Get a personalised car insurance quote in minutes.
+                No paperwork. No guesswork. Just clear pricing.
+            </p>
+
+            <div class="mt-8 flex gap-4">
+                @Html.ActionLink(
+                    "Get a Quote",
+                    "Create",
+                    "Insuree",
+                    null,
+                    new
+                         {
+                        @class = "bg-white text-indigo-700 px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition"
+                    }
+                )
+
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink(
+                        "Admin Dashboard",
+                        "Admin",
+                        "Insuree",
+                        null,
+                        new
+                            {
+                            @class = "inline-block bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition"
+                        }
+                    )
+                }
+            </div>
+        </div>
+
+        <!-- Trust Panel -->
+        <div class="bg-white text-gray-900 rounded-xl shadow-lg p-8">
+            <h3 class="text-xl font-semibold mb-4">
+                Why choose our insurance?
+            </h3>
+
+            <ul class="space-y-3 text-sm">
+                <li class="flex items-start gap-2">
+                    <span class="text-indigo-600 font-bold">✓</span>
+                    Quotes calculated automatically using clear rules
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-indigo-600 font-bold">✓</span>
+                    No hidden fees or surprise charges
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-indigo-600 font-bold">✓</span>
+                    Built with ASP.NET MVC & Entity Framework
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">
+        How it works
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-2">Enter your details</h3>
+            <p class="text-gray-600 text-sm">
+                Provide your age, car information, driving history,
+                and preferred coverage type.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-2">Instant calculation</h3>
+            <p class="text-gray-600 text-sm">
+                Our system applies pricing rules automatically
+                to calculate a fair monthly quote.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-2">View & manage</h3>
+            <p class="text-gray-600 text-sm">
+                View, edit, or delete quotes anytime.
+                Admins can review all issued quotes securely.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ADMIN CALLOUT -->
+@if (User.IsInRole("Admin"))
+{
+    <section class="bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-14 text-center">
+            <h2 class="text-2xl font-bold mb-4">
+                Admin Dashboard
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+                Review all issued insurance quotes securely.
+            </p>
+
+            @Html.ActionLink(
+                "Go to Admin Dashboard",
+                "Admin",
+                "Insuree",
+                null,
+                new
+                     {
+                    @class = "inline-block bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition"
+                }
+            )
+        </div>
     </section>
-
-    <!-- Feature Cards -->
-    <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
-            <h2 class="text-xl font-semibold text-gray-800 mb-3">
-                Getting Started
-            </h2>
-            <p class="text-gray-600 mb-4">
-                ASP.NET MVC provides a patterns-based approach that enables clean separation of concerns
-                and full control over markup.
-            </p>
-            <a href="https://go.microsoft.com/fwlink/?LinkId=301865"
-               class="text-blue-600 font-medium hover:underline">
-                Learn more →
-            </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
-            <h2 class="text-xl font-semibold text-gray-800 mb-3">
-                Get More Libraries
-            </h2>
-            <p class="text-gray-600 mb-4">
-                NuGet makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <a href="https://go.microsoft.com/fwlink/?LinkId=301866"
-               class="text-blue-600 font-medium hover:underline">
-                Learn more →
-            </a>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
-            <h2 class="text-xl font-semibold text-gray-800 mb-3">
-                Web Hosting
-            </h2>
-            <p class="text-gray-600 mb-4">
-                Find hosting providers that offer the right mix of features and pricing for your applications.
-            </p>
-            <a href="https://go.microsoft.com/fwlink/?LinkId=301867"
-               class="text-blue-600 font-medium hover:underline">
-                Learn more →
-            </a>
-        </div>
-    </section>
-</main>
+}

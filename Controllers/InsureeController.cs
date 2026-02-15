@@ -77,6 +77,14 @@ namespace Carlnsurance.Controllers
                     quote += 25.0;
                 }
 
+                //Car year rule: before 2000 adds £25
+
+                if(insuree.CarYear < 2000)
+                {
+                    quote += 25.0;
+                }
+                        
+
                     //Assign Base Quote
                     insuree.Quote = quote;
 

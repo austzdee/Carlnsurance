@@ -107,6 +107,13 @@ namespace Carlnsurance.Controllers
                     quote += 25.0;
                 }
 
+
+                // Speeding ticket rule: £10 per ticket
+                if(insuree.SpeedingTickets > 0)
+                {
+                    quote += insuree.SpeedingTickets * 10.0;
+                }
+
                //Assign Base Quote
                     insuree.Quote = quote;
 
